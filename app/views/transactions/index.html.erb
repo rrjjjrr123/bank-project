@@ -1,0 +1,17 @@
+<br><br>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-5"></div>
+    <div class="col-lg-7">
+      <h4> Bank Statement</h4>
+    </div>
+  </div>
+</div>    
+
+<% @transactions.includes(:bank_accounts).each do |transaction| %>
+    <tr>
+      Debit Account Number<td><%= transaction.debit_account_number.account_number %></td>
+      Credit Account Number<td><%= transaction.credit_account_number.account_number %></td>
+      Balance<td><%= transaction.debit_account_number.balance %></td>
+    </tr>
+  <% end %>

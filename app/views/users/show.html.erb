@@ -39,6 +39,7 @@
         </thead>
       </table><br>
     <%= link_to "Amount transfer", amount_transfer_user_bank_accounts_path(current_user.id), method: "get", class: "btn-info" %>
+    <%= link_to "Bank statement", user_bank_account_transactions_path(current_user.id, @bank_account), method: "get", class: "btn-info" %>
     </div>
   </div>
 </div>
