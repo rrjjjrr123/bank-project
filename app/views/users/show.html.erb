@@ -1,0 +1,44 @@
+<br><br>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-5"></div>
+    <div class="col-lg-7">
+      <h4> Congratulations! You have successfully signup</h4>
+    </div>
+  </div>
+</div>    
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Fullname</th>
+            <td><%=current_user.full_name%></td>
+          </tr>
+          <tr>
+            <th>email</th>
+            <td><%=current_user.email%></td>
+          </tr>
+          <% if current_user.phone_number.present? %>
+            <tr>
+              <th>contact no.</th>
+              <td><%=current_user.phone_number%></td>
+            </tr>
+          <% end %>  
+          <tr>
+            <th>Bank Account</th>
+            <td><%=@bank_account.account_number%></td>
+          </tr>
+          <tr>
+            <th>Balance</th>
+            <td><%=@bank_account.balance%></td>
+          </tr>
+        </thead>
+      </table><br>
+    <%= link_to "Amount transfer", amount_transfer_user_bank_accounts_path(current_user.id), method: "get", class: "btn-info" %>
+    </div>
+  </div>
+</div>

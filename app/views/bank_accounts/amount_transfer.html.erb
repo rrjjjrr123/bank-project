@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-6">
+      <h2> Complete your payment</h2>
+    </div>
+  </div>
+</div><br>
+  <% if current_user.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(current_user.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% current_user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<%= form_tag transfer_user_bank_accounts_path(current_user.id) do %>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        Debit Account_number<%= text_field_tag 'debit_acc', @bank_account.account_number, readonly: true %>   
+      </div> 
+      <div class="col-sm-4">
+        Credit Account Number <%= text_field_tag 'credit_acc' %>
+      </div>
+      <div class="col-sm-4">
+        Amount <%= number_field_tag 'amount' %>
+      </div>
+      <div class="col-sm-4">
+        <%=submit_tag "Submit", class: "btn btn-primary"%>
+      </div>
+    </div>
+  </div>
+<% end %>
+
