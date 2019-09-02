@@ -1,0 +1,13 @@
+defaults: &defaults
+  adapter: postgresql
+  username: postgres
+  password: postgres
+  host: localhost
+
+development:
+  database: bankproject_dev
+  <<: *defaults
+
+test: &test
+  database: bankproject_tes 
+  <<: *defaults
