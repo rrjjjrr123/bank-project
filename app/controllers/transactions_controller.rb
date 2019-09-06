@@ -3,7 +3,6 @@ class TransactionsController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
-		bank_account = BankAccount.find_by(id: params[:bank_account_id])
-	  @transactions = bank_account.transactions	
+	  @transactions = Transaction.where(debit_bank_account_id: params[:bank_account_id])
 	end
 end

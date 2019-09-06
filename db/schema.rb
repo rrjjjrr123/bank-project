@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 2019_08_30_124537) do
   enable_extension "plpgsql"
 
   create_table "bank_accounts", force: :cascade do |t|
-    t.integer "account_number"
-    t.float "balance", default: 0.0
+    t.bigint "account_number"
+    t.float "balance", default: 1000.0
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

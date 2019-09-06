@@ -9,16 +9,18 @@ class BankAccountsController < ApplicationController
   def transfer
     credit_acc = params[:credit_acc]
     credit_acc_no = BankAccount.find_by(account_number: credit_acc)
-    @transaction = Transaction.create!(credit_bank_account: credit_acc_no,
-                                       debit_bank_account: @debit_account_no,
-                                       amount: params[:amount],
-                                       bank_account_id: @debit_account_no
-                                       )
-    redirect_to root_path
+    @transaction = Transaction.new( credit_bank_account: credit_acc_no,
+                                    debit_bank_account: @debit_account_no,
+                                    amount: params[:amount],
+                                    bank_account_id: @debit_account_no
+                                  )
+    if @transaction.save
+      redirect_to root_path
+    else
+    end
   end
 
   def set_account_number
-  	@debit_account_no = BankAccount.find_by(account_number: debit_acc)
+  	@debit_account_no = BankAccount.find_by(account_number: params[:debit_acc])
   end
-
 end
